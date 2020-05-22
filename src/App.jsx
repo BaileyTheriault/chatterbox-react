@@ -1,5 +1,7 @@
 import React from 'react';
 
+import headers from './env/config';
+
 import Tile from './components/tile/tile.component';
 import ChatBox from './components/chat-box/chat-box.component';
 
@@ -20,10 +22,7 @@ class App extends React.Component {
       'http://parse.bld.hackreactor.com/chatterbox/classes/messages?order=-createdAt',
       {
         method: 'GET',
-        headers: {
-          'X-Parse-Application-Id': '22f28bc67c6c0f1ab17fa6322ae27550ac0d9502',
-          'X-Parse-REST-API-Key': 'c4dffe45d24420f7fadc4757e012c30e899a1915',
-        },
+        headers,
       }
     )
       .then(res => res.json())
@@ -39,10 +38,7 @@ class App extends React.Component {
 
     fetch('http://parse.bld.hackreactor.com/chatterbox/classes/messages', {
       method: 'POST',
-      headers: {
-        'X-Parse-Application-Id': '22f28bc67c6c0f1ab17fa6322ae27550ac0d9502',
-        'X-Parse-REST-API-Key': 'c4dffe45d24420f7fadc4757e012c30e899a1915',
-      },
+      headers,
       body: JSON.stringify(data),
     });
   };
