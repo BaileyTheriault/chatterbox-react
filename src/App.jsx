@@ -34,6 +34,19 @@ class App extends React.Component {
     this.setState({ messageCount: this.state.messageCount + 3 });
   };
 
+  handleSubmit = message => {
+    const data = message;
+
+    fetch('http://parse.bld.hackreactor.com/chatterbox/classes/messages', {
+      method: 'POST',
+      headers: {
+        'X-Parse-Application-Id': '22f28bc67c6c0f1ab17fa6322ae27550ac0d9502',
+        'X-Parse-REST-API-Key': 'c4dffe45d24420f7fadc4757e012c30e899a1915',
+      },
+      body: JSON.stringify(data),
+    });
+  };
+
   render() {
     return (
       <div className='app'>
@@ -57,7 +70,7 @@ class App extends React.Component {
             </h3>
           ) : null}
         </div>
-        <ChatBox />
+        <ChatBox handleSubmit={this.handleSubmit} />
       </div>
     );
   }
